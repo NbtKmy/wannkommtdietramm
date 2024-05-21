@@ -12,7 +12,7 @@ export default async function Home() {
       <h1>Haltestelle: Zürich, Kantonsschule</h1>
       {data.map((item, index) => {
         return (
-        <p key={index}>{item.realtimeFlag ? item.estTimeText : "Eventuell fährt die Tram unregelmässig: " + item.estTimeText }</p>
+        <p key={index}>{item.realtimeFlag ? item.estTimeText : item.estTimeText + ". (Eventuell fährt die Tram unregelmässig)" }</p>
         );
       })}
     </>
