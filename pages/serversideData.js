@@ -2,22 +2,16 @@ import XmlCompletion from '@/components/query';
 import { parseString } from 'xml2js';
 
 
-export default async function Home() {
-  
-  let data = await getData(); 
-  //console.log(data);
 
+function Test({contents}) {
+  
   return (
-    <>
-      <h1>Haltestelle: Zürich, Kantonsschule</h1>
-      {data.map((item, index) => {
-        return (
-        <p key={index}>{item.realtimeFlag ? item.estTimeText : "Eventuell fährt die Tram unregelmässig: " + item.estTimeText }</p>
-        );
-      })}
-    </>
+    <article>
+      <h2>{contents.estTimeText}</h2>
+    </article>
   );
 }
+
 
 function parseXml(xml) {
   return new Promise((resolve, reject) => {
@@ -32,7 +26,7 @@ function parseXml(xml) {
 }
 
 
-async function getData() {
+export async function getServerSideProps(context) {
   try {
 
     // create query
@@ -106,17 +100,18 @@ async function getData() {
         }
 
         let estTimeText = `Die Tram ${LineNum} Richtung nach ${LineDestination} fährt in ${min} Min. ab`
-        //console.log(estTimeText);
+        // console.log(estTimeText);
         let item = {};
         item.id = departureTime;
         item.estTimeText = estTimeText;
         item.realtimeFlag = realtimeFlag;
         contents.push(item);
     });
-    //console.log(contents);
-    return contents;
+    return { props: { contents } };
     
   } catch (error) {
     console.error("Error:", error);
   }
 }
+
+export default Test;

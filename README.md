@@ -39,6 +39,9 @@ With [xml2js](https://www.npmjs.com/package/xml2js) you can convert xml to json 
   }
 }
 ```
+
+
+trias:Trias > trias:ServiceDelivery > trias:DeliveryPayload > trias:StopEventResponse > trias:StopEventResult[0] > 
 ## Getting Started
 
 First, run the development server:
