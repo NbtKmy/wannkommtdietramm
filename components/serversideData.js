@@ -3,16 +3,6 @@ import { parseString } from 'xml2js';
 
 
 
-function Test({contents}) {
-  
-  return (
-    <article>
-      <h2>{contents.estTimeText}</h2>
-    </article>
-  );
-}
-
-
 function parseXml(xml) {
   return new Promise((resolve, reject) => {
       parseString(xml, (error, result) => {
@@ -26,7 +16,7 @@ function parseXml(xml) {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   try {
 
     // create query
@@ -107,11 +97,12 @@ export async function getServerSideProps(context) {
         item.realtimeFlag = realtimeFlag;
         contents.push(item);
     });
-    return { props: { contents } };
+    return { props: { contents },
+            revalidate: 15,        
+    };
     
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-export default Test;

@@ -6,6 +6,7 @@ export default async function Home() {
   
   let data = await getData(); 
   //console.log(data);
+    
 
   return (
     <>
@@ -108,7 +109,6 @@ async function getData() {
         let estTimeText = `Die Tram ${LineNum} Richtung nach ${LineDestination} fährt in ${min} Min. ab`
         //console.log(estTimeText);
         let item = {};
-        item.id = departureTime;
         item.estTimeText = estTimeText;
         item.realtimeFlag = realtimeFlag;
         contents.push(item);

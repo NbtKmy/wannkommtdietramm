@@ -62,3 +62,9 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+
+To use Server side functions of NextJS such as getStaticProps etc. then build at first, and run>
+```
+npx next build
+npx next start
+``` 
