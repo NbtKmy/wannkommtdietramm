@@ -1,16 +1,11 @@
-import XmlCompletion from '@/components/query';
-import { parseString } from 'xml2js';
+import Abfahrzeit  from '@/components/ServerComponent';
+import ClientComponent from '@/components/ClientComponent';
 
+export default function AbfahrzeitPage(){
 
-export default function Home({contents}) {
-  
-  console.log(contents);
-
-  return (
-    <>
-      <h1>Haltestelle: Zürich, Kantonsschule</h1>
-     
-    </>
-  );
+    return (
+        <ClientComponent>
+            <Abfahrzeit />
+        </ClientComponent>
+    );
 }
-
